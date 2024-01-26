@@ -6,7 +6,7 @@ processes.txt
 node_modules
 /.pnp
 .pnp.js
-/backend
+backend
 # testing
 /coverage
 
