@@ -1,10 +1,13 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import noteContext from "../context/noteContext";
 import NoteItem from "./NoteItem";
 
 const Notes = () => {
-  const { notes } = useContext(noteContext);
-
+  const { notes, getData } = useContext(noteContext);
+  useEffect(() => {
+    getData();
+    // eslint-disable-next-line
+  }, []);
   return (
     <div className="container my-3">
       <div className="row justify-content-center">
