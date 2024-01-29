@@ -3,9 +3,9 @@ import noteContext from "../context/noteContext";
 import NoteItem from "./NoteItem";
 
 const Notes = () => {
-  const { notes, getData } = useContext(noteContext);
+  const { notes, getNotes } = useContext(noteContext);
   useEffect(() => {
-    getData();
+    getNotes();
     // eslint-disable-next-line
   }, []);
   return (
