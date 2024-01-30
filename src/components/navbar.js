@@ -21,7 +21,7 @@ export default function Navbar() {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <Link className="navbar-brand" to="/home">
+        <Link className="navbar-brand" to="/">
           Navbar
         </Link>
 
@@ -30,9 +30,9 @@ export default function Navbar() {
             <li className="nav-item active">
               <Link
                 className={`nav-link ${
-                  location.pathname === "/home" ? "active" : ""
+                  location.pathname === "/" ? "active" : ""
                 }`}
-                to="/home"
+                to="/"
               >
                 Home <span className="sr-only">(current)</span>
               </Link>

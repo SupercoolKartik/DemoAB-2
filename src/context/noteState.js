@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import NoteContext from "./noteContext";
 
 const NoteState = (props) => {
@@ -22,8 +22,8 @@ const NoteState = (props) => {
 
   ////FUNCTIONS
 
-  //Creating a new Note
-  const addNote = async (title, description, tag) => {
+  //Create a new Note
+  const addNote = useCallback(async (title, description, tag) => {
     const res = await fetch(`${host}/api/notes/createnote`, {
       method: "POST",
       headers: {
@@ -39,9 +39,12 @@ const NoteState = (props) => {
     });
     const responseData = await res.json();
     console.log(responseData);
-  };
 
-  const deleteNote = async (id) => {
+    getNotes(); //To fetch/refresh all notes whenever a note is added
+  }, []);
+
+  //Delete a Note
+  const deleteNote = useCallback(async (id) => {
     const res = await fetch(`${host}/api/notes/deletenote/${id}`, {
       method: "DELETE",
       headers: {
@@ -52,10 +55,36 @@ const NoteState = (props) => {
     });
     const responseData = await res.json();
     console.log(responseData);
-  };
+
+    getNotes(); //To fetch/refresh all notes whenever a note is deleted
+  }, []);
+
+  //Edit a Note
+  const editNote = useCallback(async (id, title, description, tag) => {
+    const res = await fetch(`${host}/api/notes/updatenote/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token":
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5hbWUiOiJXb25kZXIgV29tYW4iLCJpZCI6IjY1YjM4ZDY2ZDU5ODhhNmNjZWVlMzY0OSJ9LCJpYXQiOjE3MDYyNjU5NTh9.8ml-L3HGliUhEUXx4yINYpzoaJazk0A-BGbb_v4hD8w",
+      },
+
+      body: JSON.stringify({
+        title: title,
+        description: description,
+        tag: tag,
+      }),
+    });
+    const responseData = await res.json();
+    console.log(responseData);
+
+    getNotes(); //To fetch/refresh all notes whenever a note is editted
+  }, []);
 
   return (
-    <NoteContext.Provider value={{ notes, addNote, deleteNote, getNotes }}>
+    <NoteContext.Provider
+      value={{ notes, addNote, deleteNote, getNotes, editNote }}
+    >
       {props.children}
     </NoteContext.Provider>
   );

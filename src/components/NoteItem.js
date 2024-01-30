@@ -16,6 +16,13 @@ const NoteItem = (props) => {
               <cite title="Source Title">Author</cite>
             </footer>
             <i
+              className="fa-solid fa-pen mx-4 ml-0"
+              title="Edit Note"
+              onClick={() => {
+                props.launchModal(props.note);
+              }}
+            ></i>
+            <i
               className="fa-solid fa-trash mx-4"
               title="Delete Note"
               onClick={() => {
