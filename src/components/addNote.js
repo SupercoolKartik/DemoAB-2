@@ -15,6 +15,7 @@ const AddNote = () => {
     else {
       addNote(note.title, note.description, note.tag);
     }
+    setNote({ title: "", description: "", tag: "" });
   };
 
   const onChange = (e) => {
@@ -34,6 +35,7 @@ const AddNote = () => {
               id="title"
               name="title"
               placeholder="Enter Title"
+              value={note.title}
               onChange={onChange}
             />
           </div>
@@ -45,6 +47,7 @@ const AddNote = () => {
               id="description"
               name="description"
               placeholder="Enter the Description"
+              value={note.description}
               onChange={onChange}
             />
           </div>
@@ -56,6 +59,7 @@ const AddNote = () => {
               id="tag"
               name="tag"
               placeholder="Enter Tag"
+              value={note.tag}
               onChange={onChange}
             />
           </div>
