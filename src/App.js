@@ -4,6 +4,8 @@ import Navbar from "./components/navbar";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import About from "./components/about";
 import NoteState from "./context/noteState";
+import Login from "./components/login";
+
 function App() {
   return (
     <>
@@ -11,10 +13,10 @@ function App() {
         <div className="App">
           <Router>
             <Navbar />
-            <h1>Welcome to NotesCloud</h1>
             <Routes>
               <Route exact path="/" element={<Home />} />
               <Route exact path="/about" element={<About />} />
+              <Route exact path="/login" element={<Login />} />
             </Routes>
           </Router>
         </div>

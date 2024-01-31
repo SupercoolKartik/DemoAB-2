@@ -54,6 +54,9 @@ export default function Navbar() {
             </li>
           </ul>
         </div>
+        <Link className="btn btn-secondary mx-1" to="/login" role="button">
+          Login
+        </Link>
       </nav>
     </>
   );
