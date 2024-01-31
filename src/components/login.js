@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  let navigate = useNavigate();
   const host = "http://localhost:5000";
   const [credentials, setCredentials] = useState({ email: "", password: "" });
 
@@ -29,7 +31,9 @@ const Login = () => {
 
       const responseData = await res.json();
 
-      if (responseData.success === true) {
+      if (responseData.success) {
+        localStorage.setItem("token", responseData.authToken);
+        navigate("/");
         console.log("Redirected!");
       } else {
         alert("Invalid Credentials");
