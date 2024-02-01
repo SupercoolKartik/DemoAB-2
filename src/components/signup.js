@@ -14,7 +14,7 @@ const Signup = () => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
 
-  const onClickHandler = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
@@ -52,7 +52,7 @@ const Signup = () => {
     <>
       <h1>Sign Up to NotesCloud</h1>
       <div className="container">
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="exampleInputUsername">Name</label>
             <input
@@ -63,6 +63,7 @@ const Signup = () => {
               id="exampleInputUsername"
               aria-describedby="emailHelp"
               placeholder="Enter Username"
+              minLength="3"
             />
           </div>
           <div className="form-group">
@@ -89,6 +90,7 @@ const Signup = () => {
               name="password"
               id="exampleInputPassword1"
               placeholder="Password"
+              minLength="5"
             />
           </div>
           <div className="form-group">
@@ -100,9 +102,10 @@ const Signup = () => {
               name="cpassword"
               id="exampleInputCPassword1"
               placeholder="Confirm Password"
+              minLength="5"
             />
           </div>
-          <div className="form-check">
+          {/* <div className="form-check">
             <input
               type="checkbox"
               className="form-check-input"
@@ -111,12 +114,8 @@ const Signup = () => {
             <label className="form-check-label" htmlFor="exampleCheck1">
               Check me out
             </label>
-          </div>
-          <button
-            type="submit"
-            className="btn btn-primary"
-            onClick={onClickHandler}
-          >
+          </div> */}
+          <button type="submit" className="btn btn-primary">
             Submit
           </button>
         </form>

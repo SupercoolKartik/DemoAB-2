@@ -72,6 +72,7 @@ const Login = () => {
               id="exampleInputPassword1"
               placeholder="Password"
               onChange={onChange}
+              minLength="5"
             />
           </div>
           <div className="form-check">

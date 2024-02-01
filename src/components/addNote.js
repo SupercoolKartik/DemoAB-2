@@ -7,7 +7,7 @@ const AddNote = () => {
 
   const [note, setNote] = useState({ title: "", description: "", tag: "" });
 
-  const onClickHandler = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (note.title === "") return alert("Please enter a note title");
     else if (note.description === "")
@@ -26,7 +26,7 @@ const AddNote = () => {
     <>
       <h2>Add a Note</h2>
       <div className="container my-3 ">
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="title">Title</label>
             <input
@@ -37,6 +37,7 @@ const AddNote = () => {
               placeholder="Enter Title"
               value={note.title}
               onChange={onChange}
+              minLength="3"
             />
           </div>
           <div className="form-group">
@@ -49,6 +50,7 @@ const AddNote = () => {
               placeholder="Enter the Description"
               value={note.description}
               onChange={onChange}
+              minLength="5"
             />
           </div>
           <div className="form-group">
@@ -64,11 +66,7 @@ const AddNote = () => {
             />
           </div>
 
-          <button
-            type="submit"
-            className="btn my-1 btn-primary"
-            onClick={onClickHandler}
-          >
+          <button type="submit" className="btn my-1 btn-primary">
             Submit
           </button>
         </form>
