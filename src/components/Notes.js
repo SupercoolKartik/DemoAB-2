@@ -17,7 +17,7 @@ const Notes = () => {
   });
 
   const ref = useRef(null);
-
+  const refToClose = useRef(null);
   //Launching the Modal for Editing note
   const launchModal = (currentNote) => {
     setNote({
@@ -32,10 +32,12 @@ const Notes = () => {
   //Passing the values put in the Modal form in the notes state
   const onChange = async (e) => {
     setNote({ ...note, [e.target.name]: e.target.value });
+    console.log(note);
   };
   //Submitting the updated values to the database
   const submitUpdate = async (e) => {
     e.preventDefault();
+    ref.current.click();
     await editNote(note.id, note.title, note.description, note.tag);
   };
 
@@ -115,23 +117,20 @@ const Notes = () => {
                     onChange={onChange}
                   />
                 </div>
+                <div className="modal-footer">
+                  <button
+                    type="button"
+                    className="btn btn-secondary"
+                    data-dismiss="modal"
+                    ref={refToClose}
+                  >
+                    Close
+                  </button>
+                  <button type="submit" className="btn btn-primary">
+                    Update Note
+                  </button>
+                </div>
               </form>
-            </div>
-            <div className="modal-footer">
-              <button
-                type="button"
-                className="btn btn-secondary"
-                data-dismiss="modal"
-              >
-                Close
-              </button>
-              <button
-                type="submit"
-                className="btn btn-primary"
-                data-dismiss="modal"
-              >
-                Update Note
-              </button>
             </div>
           </div>
         </div>
