@@ -21,8 +21,8 @@ export default function Navbar() {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <Link className="navbar-brand" to="/">
-          Navbar
+        <Link className="navbar-brand" style={{ marginLeft: "7px" }} to="/">
+          NotesCloud
         </Link>
 
         <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
