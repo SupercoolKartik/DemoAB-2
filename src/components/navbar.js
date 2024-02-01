@@ -1,11 +1,16 @@
 import { React, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   //Used useLocation in order to the make the current path in Navbar look active
   const location = useLocation();
+  const navigate = useNavigate();
   useEffect(() => {}, [location]);
+  const logoutHandler = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
 
   return (
     <>
@@ -54,17 +59,29 @@ export default function Navbar() {
             </li>
           </ul>
         </div>
-        <Link className="btn btn-secondary mx-1" to="/login" role="button">
-          Login
-        </Link>
-        <Link
-          className="btn btn-secondary"
-          to="/signup"
-          role="button"
-          style={{ marginRight: "2rem" }}
-        >
-          SignUp
-        </Link>
+        {!localStorage.getItem("token") ? (
+          <div>
+            <Link className="btn btn-secondary mx-1" to="/login" role="button">
+              Login
+            </Link>
+            <Link
+              className="btn btn-secondary"
+              to="/signup"
+              role="button"
+              style={{ marginRight: "2rem" }}
+            >
+              SignUp
+            </Link>
+          </div>
+        ) : (
+          <button
+            className="btn btn-secondary"
+            style={{ marginRight: "2rem" }}
+            onClick={logoutHandler}
+          >
+            Logout
+          </button>
+        )}
       </nav>
     </>
   );
