@@ -76,7 +76,7 @@ const Notes = () => {
               </button>
             </div>
             <div className="modal-body">
-              <form>
+              <form onSubmit={submitUpdate}>
                 <div className="form-group">
                   <label htmlFor="title">Title</label>
                   <input
@@ -87,6 +87,7 @@ const Notes = () => {
                     placeholder="Enter Title"
                     value={note.title}
                     onChange={onChange}
+                    minLength="3"
                   />
                 </div>
                 <div className="form-group">
@@ -99,6 +100,7 @@ const Notes = () => {
                     placeholder="Enter the Description"
                     value={note.description}
                     onChange={onChange}
+                    minLength="5"
                   />
                 </div>
                 <div className="form-group">
@@ -124,9 +126,8 @@ const Notes = () => {
                 Close
               </button>
               <button
-                type="button"
+                type="submit"
                 className="btn btn-primary"
-                onClick={submitUpdate}
                 data-dismiss="modal"
               >
                 Update Note
