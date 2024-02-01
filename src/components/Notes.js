@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect, useRef } from "react";
 import noteContext from "../context/noteContext";
 import NoteItem from "./NoteItem";
 
-const Notes = () => {
+const Notes = (props) => {
   const { notes, getNotes, editNote } = useContext(noteContext);
   useEffect(() => {
     getNotes();
@@ -32,13 +32,13 @@ const Notes = () => {
   //Passing the values put in the Modal form in the notes state
   const onChange = async (e) => {
     setNote({ ...note, [e.target.name]: e.target.value });
-    console.log(note);
   };
   //Submitting the updated values to the database
   const submitUpdate = async (e) => {
     e.preventDefault();
     ref.current.click();
     await editNote(note.id, note.title, note.description, note.tag);
+    props.showAlert("Note is Updated Successfully!", "success");
   };
 
   return (
@@ -138,7 +138,12 @@ const Notes = () => {
       <div className="row justify-content-center">
         {notes.map((note, index) => (
           <div key={index} className="col-md-4 mb-3">
-            <NoteItem key={note._id} note={note} launchModal={launchModal} />
+            <NoteItem
+              key={note._id}
+              note={note}
+              launchModal={launchModal}
+              showAlert={props.showAlert}
+            />
           </div>
         ))}
       </div>

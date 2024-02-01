@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import noteContext from "../context/noteContext";
 
-const AddNote = () => {
+const AddNote = (props) => {
   // eslint-disable-next-line
   const { notes, addNote } = useContext(noteContext);
 
@@ -14,6 +14,7 @@ const AddNote = () => {
       return alert("Please enter a note description");
     else {
       addNote(note.title, note.description, note.tag);
+      props.showAlert("Note Added Successfully!", "success");
     }
     setNote({ title: "", description: "", tag: "" });
   };

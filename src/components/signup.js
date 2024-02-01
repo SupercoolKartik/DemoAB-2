@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Signup = () => {
+const Signup = (props) => {
   let navigate = useNavigate();
   const host = "http://localhost:5000";
   const [credentials, setCredentials] = useState({
@@ -30,9 +30,9 @@ const Signup = () => {
         }),
       });
 
-      if (!res.ok) {
-        throw new Error(`Request failed with status ${res.status}`);
-      }
+      // if (!res.ok) {
+      //   throw new Error(`Request failed with status ${res.status}`);
+      // }
 
       const responseData = await res.json();
 
@@ -40,8 +40,9 @@ const Signup = () => {
         localStorage.setItem("token", responseData.authToken);
         navigate("/");
         console.log("Redirected!");
+        props.showAlert("User Created Successfully!", "success");
       } else {
-        alert("Invalid Credentials");
+        props.showAlert("Invalid User Details", "danger");
       }
     } catch (error) {
       console.error("Error:", error.message);
