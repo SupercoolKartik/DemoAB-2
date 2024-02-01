@@ -57,6 +57,14 @@ export default function Navbar() {
         <Link className="btn btn-secondary mx-1" to="/login" role="button">
           Login
         </Link>
+        <Link
+          className="btn btn-secondary"
+          to="/signup"
+          role="button"
+          style={{ marginRight: "2rem" }}
+        >
+          SignUp
+        </Link>
       </nav>
     </>
   );
