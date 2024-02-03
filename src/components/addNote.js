@@ -25,12 +25,16 @@ const AddNote = (props) => {
 
   return (
     <>
-      <h2>Add a Note</h2>
-      <div className="container my-3 ">
+      <h2 className="mt-5 mb-1">
+        <strong>Add a Note</strong>
+      </h2>
+      <div className="container my-3" style={{ width: "60%" }}>
         <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="title">Title</label>
-            <input
+          <div className="form-group d-flex flex-column align-items-start my-1">
+            <label htmlFor="title">
+              <strong>Title:</strong>
+            </label>
+            <textarea
               type="text"
               className="form-control"
               id="title"
@@ -39,12 +43,15 @@ const AddNote = (props) => {
               value={note.title}
               onChange={onChange}
               minLength="3"
+              rows="1"
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="description">Description</label>
-            <input
-              type="tect"
+          <div className="form-group d-flex flex-column align-items-start my-1">
+            <label htmlFor="description">
+              <strong>Description:</strong>
+            </label>
+            <textarea
+              type="text"
               className="form-control"
               id="description"
               name="description"
@@ -52,11 +59,14 @@ const AddNote = (props) => {
               value={note.description}
               onChange={onChange}
               minLength="5"
+              rows="6"
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="tag">Tag</label>
-            <input
+          <div className="form-group d-flex flex-column align-items-start my-1">
+            <label htmlFor="tag">
+              <strong>Tag:</strong>
+            </label>
+            <textarea
               type="text"
               className="form-control"
               id="tag"
@@ -64,6 +74,7 @@ const AddNote = (props) => {
               placeholder="Enter Tag"
               value={note.tag}
               onChange={onChange}
+              rows="1"
             />
           </div>
 
@@ -71,6 +82,7 @@ const AddNote = (props) => {
             Submit
           </button>
         </form>
+        <hr className="my-5" />
       </div>
     </>
   );
