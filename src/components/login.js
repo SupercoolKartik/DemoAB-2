@@ -46,11 +46,13 @@ const Login = (props) => {
 
   return (
     <>
-      <h1>Login to NotesCloud</h1>
-      <div className="container">
+      <h1 className="my-3">Login to NotesCloud</h1>
+      <div className="container" style={{ width: "45%" }}>
         <form onSubmit={onClickHandler}>
-          <div className="form-group">
-            <label htmlFor="exampleInputEmail1">Email address</label>
+          <div className="d-flex flex-column align-items-start my-3">
+            <label htmlFor="exampleInputEmail1">
+              <strong>Email address:</strong>
+            </label>
             <input
               type="email"
               name="email"
@@ -60,12 +62,11 @@ const Login = (props) => {
               placeholder="Enter email"
               onChange={onChange}
             />
-            <small id="emailHelp" className="form-text text-muted">
-              We'll never share your email with anyone else.
-            </small>
           </div>
-          <div className="form-group">
-            <label htmlFor="exampleInputPassword1">Password</label>
+          <div className="d-flex flex-column align-items-start my-3">
+            <label htmlFor="exampleInputPassword1">
+              <strong>Password:</strong>
+            </label>
             <input
               type="password"
               name="password"

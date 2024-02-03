@@ -51,11 +51,13 @@ const Signup = (props) => {
 
   return (
     <>
-      <h1>Sign Up to NotesCloud</h1>
-      <div className="container">
+      <h1 className="my-3">Sign Up to NotesCloud</h1>
+      <div className="container" style={{ width: "50%" }}>
         <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="exampleInputUsername">Name</label>
+          <div className="form-group d-flex flex-column align-items-start my-3">
+            <label htmlFor="exampleInputUsername">
+              <strong>Name:</strong>
+            </label>
             <input
               type="text"
               className="form-control"
@@ -67,8 +69,10 @@ const Signup = (props) => {
               minLength="3"
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="exampleInputEmail1">Email address</label>
+          <div className="form-group d-flex flex-column align-items-start my-3">
+            <label htmlFor="exampleInputEmail1">
+              <strong>Email address:</strong>
+            </label>
             <input
               type="email"
               className="form-control"
@@ -78,12 +82,11 @@ const Signup = (props) => {
               aria-describedby="emailHelp"
               placeholder="Enter email"
             />
-            <small id="emailHelp" className="form-text text-muted">
-              We'll never share your email with anyone else.
-            </small>
           </div>
-          <div className="form-group">
-            <label htmlFor="exampleInputPassword1">Password</label>
+          <div className="form-group d-flex flex-column align-items-start my-3">
+            <label htmlFor="exampleInputPassword1">
+              <strong>Password:</strong>
+            </label>
             <input
               type="password"
               className="form-control"
@@ -94,8 +97,10 @@ const Signup = (props) => {
               minLength="5"
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="exampleInputCPassword1">Confirm Password</label>
+          <div className="form-group d-flex flex-column align-items-start my-3">
+            <label htmlFor="exampleInputCPassword1">
+              <strong>Confirm Password:</strong>
+            </label>
             <input
               type="password"
               className="form-control"

@@ -70,7 +70,10 @@ const Notes = (props) => {
       >
         <div className="modal-dialog modal-dialog-centered" role="document">
           <div className="modal-content">
-            <div className="modal-header">
+            <div
+              className="modal-header "
+              style={{ backgroundColor: "#f3effc" }}
+            >
               <h5 className="modal-title" id="exampleModalLongTitle">
                 Edit Note!
               </h5>
@@ -80,15 +83,21 @@ const Notes = (props) => {
                 className="close"
                 data-dismiss="modal"
                 aria-label="Close"
+                style={{
+                  border: "none", // Remove the border
+                  background: "transparent", // Make the background transparent
+                  color: "#000", // Set the text color
+                  fontSize: "1.5rem", // Adjust the font size if needed
+                }}
               >
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div className="modal-body">
               <form onSubmit={submitUpdate}>
-                <div className="form-group">
-                  <label htmlFor="title">Title</label>
-                  <input
+                <div className="form-group d-flex flex-column align-items-start my-1">
+                  <label htmlFor="title">Title:</label>
+                  <textarea
                     type="text"
                     className="form-control"
                     id="title"
@@ -97,11 +106,12 @@ const Notes = (props) => {
                     value={note.title}
                     onChange={onChange}
                     minLength="3"
+                    rows="1"
                   />
                 </div>
-                <div className="form-group">
-                  <label htmlFor="description">Description</label>
-                  <input
+                <div className="form-group d-flex flex-column align-items-start my-1">
+                  <label htmlFor="description">Description:</label>
+                  <textarea
                     type="text"
                     className="form-control"
                     id="description"
@@ -110,11 +120,12 @@ const Notes = (props) => {
                     value={note.description}
                     onChange={onChange}
                     minLength="5"
+                    rows="4"
                   />
                 </div>
-                <div className="form-group">
-                  <label htmlFor="tag">Tag</label>
-                  <input
+                <div className="form-group d-flex flex-column align-items-start my-1">
+                  <label htmlFor="tag">Tag:</label>
+                  <textarea
                     type="text"
                     className="form-control"
                     id="tag"
@@ -122,6 +133,7 @@ const Notes = (props) => {
                     placeholder="Enter Tag"
                     value={note.tag}
                     onChange={onChange}
+                    rows="1"
                   />
                 </div>
                 <div className="modal-footer">

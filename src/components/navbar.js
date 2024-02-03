@@ -14,7 +14,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <button
           className="navbar-toggler"
           type="button"
@@ -59,17 +59,13 @@ export default function Navbar() {
             </li>
           </ul>
         </div>
+
         {!localStorage.getItem("token") ? (
           <div>
             <Link className="btn btn-secondary mx-1" to="/login" role="button">
               Login
             </Link>
-            <Link
-              className="btn btn-secondary"
-              to="/signup"
-              role="button"
-              style={{ marginRight: "2rem" }}
-            >
+            <Link className="btn btn-secondary me-5" to="/signup" role="button">
               SignUp
             </Link>
           </div>
@@ -77,14 +73,13 @@ export default function Navbar() {
           <div>
             <Link to="/user">
               <i
-                className="fa-regular fa-user mx-5"
+                className="fa-regular fa-user me-4 ms-3"
                 title="User Profile"
                 style={{ color: "#74C0FC" }}
               ></i>
             </Link>
             <button
-              className="btn btn-secondary mr-5 ml-1"
-              style={{ marginRight: "2rem" }}
+              className="btn btn-secondary me-5 ms-1 "
               onClick={logoutHandler}
             >
               Logout

@@ -13,7 +13,7 @@ const Alert = (props) => {
         <div
           className={`alert alert-${props.alert.type} `}
           role="alert"
-          style={{ textAlign: "left" }}
+          style={{ textAlign: "left", marginTop: "65px" }}
         >
           <strong>{capitalize(props.alert.type)}</strong>:
           {" " + props.alert.message}

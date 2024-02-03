@@ -25,7 +25,7 @@ const AddNote = (props) => {
 
   return (
     <>
-      <h2 className="mt-5 mb-1">
+      <h2 className=" mb-1" style={{ marginTop: "110px" }}>
         <strong>Add a Note</strong>
       </h2>
       <div className="container my-3" style={{ width: "60%" }}>
