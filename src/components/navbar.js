@@ -74,13 +74,22 @@ export default function Navbar() {
             </Link>
           </div>
         ) : (
-          <button
-            className="btn btn-secondary"
-            style={{ marginRight: "2rem" }}
-            onClick={logoutHandler}
-          >
-            Logout
-          </button>
+          <div>
+            <Link to="/user">
+              <i
+                className="fa-regular fa-user mx-5"
+                title="User Profile"
+                style={{ color: "#74C0FC" }}
+              ></i>
+            </Link>
+            <button
+              className="btn btn-secondary mr-5 ml-1"
+              style={{ marginRight: "2rem" }}
+              onClick={logoutHandler}
+            >
+              Logout
+            </button>
+          </div>
         )}
       </nav>
     </>

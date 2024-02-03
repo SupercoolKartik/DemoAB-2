@@ -3,9 +3,13 @@ import NoteContext from "./noteContext";
 
 const NoteState = (props) => {
   // eslint-disable-next-line
-  const [notes, setNotes] = useState([]);
+
   const host = "http://localhost:5000";
 
+  ////FUNCTIONS
+
+  //Fetch all notes by a user
+  const [notes, setNotes] = useState([]);
   const getNotes = async () => {
     const res = await fetch(`${host}/api/notes/fetchallnotes`, {
       method: "GET",
@@ -18,8 +22,6 @@ const NoteState = (props) => {
     const responseData = await res.json();
     setNotes(responseData);
   };
-
-  ////FUNCTIONS
 
   //Create a new Note
   const addNote = useCallback(async (title, description, tag) => {
