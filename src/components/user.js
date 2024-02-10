@@ -28,7 +28,7 @@ const User = () => {
   }, []);
   return (
     <>
-      <section className="vh-100" style={{ backgroundColor: "#f4f5f7" }}>
+      <section className="vh-100 mt-3">
         <div className="py-5 h-100">
           <div className="d-flex justify-content-center align-items-center h-100">
             <div className="col-lg-6 mb-4 mb-lg-0">
@@ -39,7 +39,7 @@ const User = () => {
                     style={{
                       borderTopLeftRadius: ".5rem",
                       borderBottomLeftRadius: ".5rem",
-                      backgroundColor: "#ffc457",
+                      backgroundColor: "#babdd0",
                     }}
                   >
                     <img
@@ -56,7 +56,7 @@ const User = () => {
                   </div>
                   <div
                     className="col-md-8"
-                    style={{ backgroundColor: "rgb(131 142 197)" }}
+                    style={{ backgroundColor: "#959596" }}
                   >
                     <div className="card-body p-4">
                       <h6>Information</h6>

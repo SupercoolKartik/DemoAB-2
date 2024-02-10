@@ -11,7 +11,7 @@ const NoteItem = (props) => {
           style={
             mode === "dark"
               ? { backgroundColor: "#001f3f" }
-              : { backgroundColor: "#f3effc" }
+              : { backgroundColor: "#d5d5d5" }
           }
         >
           {props.note.title}
@@ -20,7 +20,7 @@ const NoteItem = (props) => {
           className={`card-body text-${mode === "dark" ? "light" : "dark"}`}
           style={
             mode === "dark"
-              ? { backgroundColor: "black" }
+              ? { backgroundColor: "#1e2026" }
               : { backgroundColor: "#f3effc" }
           }
         >
