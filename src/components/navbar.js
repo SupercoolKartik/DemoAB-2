@@ -1,20 +1,35 @@
-import { React, useEffect } from "react";
+import { React, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useLocation, useNavigate } from "react-router-dom";
+import noteContext from "../context/noteContext";
 
 export default function Navbar() {
   //Used useLocation in order to the make the current path in Navbar look active
   const location = useLocation();
   const navigate = useNavigate();
-  useEffect(() => {}, [location]);
+
+  const { mode, modeChanger } = useContext(noteContext);
+  //  if(mode==="dark"){setMode("light");localStorage.removeItem('
+  useEffect(() => {}, [location, mode]);
   const logoutHandler = () => {
     localStorage.removeItem("token");
     navigate("/login");
   };
 
   return (
-    <>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div>
+      <nav
+        className="navbar navbar-expand-lg navbar-dark fixed-top"
+        style={
+          mode === "dark"
+            ? { backgroundColor: "#001f3f" }
+            : {
+                backgroundColor: "#d5d5d5",
+                border: "solid 1px",
+                borderRadius: "5px",
+              }
+        }
+      >
         <button
           className="navbar-toggler"
           type="button"
@@ -26,7 +41,11 @@ export default function Navbar() {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <Link className="navbar-brand" style={{ marginLeft: "7px" }} to="/">
+        <Link
+          className="navbar-brand"
+          style={{ marginLeft: "7px", color: "red" }}
+          to="/"
+        >
           NotesCloud
         </Link>
 
@@ -37,6 +56,9 @@ export default function Navbar() {
                 className={`nav-link ${
                   location.pathname === "/" ? "active" : ""
                 }`}
+                style={
+                  mode === "dark" ? { color: "white" } : { color: "black" }
+                }
                 to="/"
               >
                 Home <span className="sr-only">(current)</span>
@@ -47,17 +69,52 @@ export default function Navbar() {
                 className={`nav-link ${
                   location.pathname === "/about" ? "active" : ""
                 }`}
+                style={
+                  mode === "dark" ? { color: "white" } : { color: "black" }
+                }
                 to="/about"
               >
                 About
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link disabled" to="/home">
+              <Link
+                className="nav-link disabled"
+                style={
+                  mode === "dark" ? { color: "white" } : { color: "black" }
+                }
+                to="/home"
+              >
                 Disabled
               </Link>
             </li>
           </ul>
+        </div>
+        <div className="me-4">
+          {mode === "light" ? (
+            <i
+              className="bi bi-moon-stars-fill text-dark"
+              title="Turn on Dark Mode"
+              onClick={modeChanger}
+            ></i>
+          ) : (
+            <i
+              className="bi bi-brightness-high-fill text-light "
+              title="Turn on Light Mode"
+              onClick={modeChanger}
+            ></i>
+          )}
+        </div>
+        <div className="form-check form-switch me-1">
+          <input
+            className="form-check-input"
+            type="checkbox"
+            role="switch"
+            id="flexSwitchCheckDefault"
+          />
+          {/* <label className="form-check-label" htmlFor="flexSwitchCheckDefault">
+            Default switch checkbox input
+          </label> */}
         </div>
 
         {!localStorage.getItem("token") ? (
@@ -87,6 +144,6 @@ export default function Navbar() {
           </div>
         )}
       </nav>
-    </>
+    </div>
   );
 }

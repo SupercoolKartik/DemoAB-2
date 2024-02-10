@@ -8,6 +8,18 @@ const NoteState = (props) => {
 
   ////FUNCTIONS
 
+  //Change Modes
+  const [mode, setMode] = useState("light");
+  const modeChanger = () => {
+    if (mode === "dark") {
+      setMode("light");
+      document.body.style.backgroundColor = "#ffffff";
+    } else {
+      setMode("dark");
+      document.body.style.backgroundColor = "#0a0a0a";
+    }
+  };
+
   //Fetch all notes by a user
   const [notes, setNotes] = useState([]);
   const getNotes = async () => {
@@ -81,7 +93,15 @@ const NoteState = (props) => {
 
   return (
     <NoteContext.Provider
-      value={{ notes, addNote, deleteNote, getNotes, editNote }}
+      value={{
+        notes,
+        addNote,
+        deleteNote,
+        getNotes,
+        editNote,
+        mode,
+        modeChanger,
+      }}
     >
       {props.children}
     </NoteContext.Provider>

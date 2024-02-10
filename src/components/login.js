@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import noteContext from "../context/noteContext";
 
 const Login = (props) => {
   let navigate = useNavigate();
+  const { mode } = useContext(noteContext);
   const host = "http://localhost:5000";
   const [credentials, setCredentials] = useState({ email: "", password: "" });
 
@@ -25,17 +27,12 @@ const Login = (props) => {
         }),
       });
 
-      // if (!res.ok) {
-      //   throw new Error(`Request failed with status ${res.status}`);
-      // }
-
       const responseData = await res.json();
 
       if (responseData.success) {
         localStorage.setItem("token", responseData.authToken);
         navigate("/");
-        console.log("Redirected!");
-        props.showAlert("Loged in Successfully!", "success");
+        props.showAlert("Logged in Successfully!", "success");
       } else {
         props.showAlert("Invalid User Details", "danger");
       }
@@ -45,36 +42,57 @@ const Login = (props) => {
   };
 
   return (
-    <>
-      <h1 className="my-3">Login to NotesCloud</h1>
-      <div className="container" style={{ width: "45%" }}>
+    <div>
+      <h1 className={`my-3 ${mode === "dark" ? "text-light" : ""}`}>
+        Login to NotesCloud
+      </h1>
+      <div className={`container `} style={{ width: "45%" }}>
+        {/* ${mode === "dark" ? "text-light" : ""} */}
         <form onSubmit={onClickHandler}>
-          <div className="d-flex flex-column align-items-start my-3">
+          <div
+            className={`d-flex flex-column align-items-start my-3 ${
+              mode === "dark" ? "text-light" : ""
+            }`}
+          >
             <label htmlFor="exampleInputEmail1">
               <strong>Email address:</strong>
             </label>
             <input
               type="email"
               name="email"
-              className="form-control"
+              className={`form-control `}
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
               placeholder="Enter email"
               onChange={onChange}
+              style={{
+                color: mode === "light" ? "#333" : "#FFF",
+                backgroundColor: mode === "light" ? "#FFF" : "#9c9c9c",
+                borderColor: mode === "light" ? "#CCC" : "#333",
+              }}
             />
           </div>
-          <div className="d-flex flex-column align-items-start my-3">
+          <div
+            className={`d-flex flex-column align-items-start my-3 ${
+              mode === "dark" ? "text-light" : ""
+            }`}
+          >
             <label htmlFor="exampleInputPassword1">
               <strong>Password:</strong>
             </label>
             <input
               type="password"
               name="password"
-              className="form-control"
+              className={`form-control `}
               id="exampleInputPassword1"
               placeholder="Password"
               onChange={onChange}
               minLength="5"
+              style={{
+                color: mode === "light" ? "#333" : "#FFF",
+                backgroundColor: mode === "light" ? "#FFF" : "#9c9c9c",
+                borderColor: mode === "light" ? "#CCC" : "#333",
+              }}
             />
           </div>
           <div className="form-check">
@@ -83,16 +101,24 @@ const Login = (props) => {
               className="form-check-input"
               id="exampleCheck1"
             />
-            <label className="form-check-label" htmlFor="exampleCheck1">
+            <label
+              className={`form-check-label ${
+                mode === "dark" ? "text-light" : ""
+              }`}
+              htmlFor="exampleCheck1"
+            >
               Check me out
             </label>
           </div>
-          <button type="submit" className="btn btn-primary">
+          <button
+            type="submit"
+            className={`btn ${mode === "dark" ? "btn-light" : "btn-primary"}`}
+          >
             Submit
           </button>
         </form>
       </div>
-    </>
+    </div>
   );
 };
 

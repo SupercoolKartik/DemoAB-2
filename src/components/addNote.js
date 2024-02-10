@@ -3,7 +3,7 @@ import noteContext from "../context/noteContext";
 
 const AddNote = (props) => {
   // eslint-disable-next-line
-  const { notes, addNote } = useContext(noteContext);
+  const { notes, addNote, mode } = useContext(noteContext);
 
   const [note, setNote] = useState({ title: "", description: "", tag: "" });
 
@@ -24,8 +24,16 @@ const AddNote = (props) => {
   };
 
   return (
-    <>
-      <h2 className=" mb-1" style={{ marginTop: "110px" }}>
+    <div
+      className={`text-${mode === "light" ? "dark" : "light"} `}
+      // style={
+      //   mode === "dark"
+      //     ? { backgroundColor: "black" }
+      //     : { backgroundColor: "white" }
+      // }
+      // #585258
+    >
+      <h2 className=" mb-1" style={{ marginTop: "100px" }}>
         <strong>Add a Note</strong>
       </h2>
       <div className="container my-3" style={{ width: "60%" }}>
@@ -42,6 +50,11 @@ const AddNote = (props) => {
               placeholder="Enter Title"
               value={note.title}
               onChange={onChange}
+              style={{
+                color: mode === "light" ? "#333" : "#FFF",
+                backgroundColor: mode === "light" ? "#FFF" : "#9c9c9c",
+                borderColor: mode === "light" ? "#CCC" : "#333",
+              }}
               minLength="3"
               rows="1"
             />
@@ -58,6 +71,11 @@ const AddNote = (props) => {
               placeholder="Enter the Description"
               value={note.description}
               onChange={onChange}
+              style={{
+                color: mode === "light" ? "#333" : "#FFF",
+                backgroundColor: mode === "light" ? "#FFF" : "#9c9c9c",
+                borderColor: mode === "light" ? "#CCC" : "#333",
+              }}
               minLength="5"
               rows="6"
             />
@@ -74,6 +92,11 @@ const AddNote = (props) => {
               placeholder="Enter Tag"
               value={note.tag}
               onChange={onChange}
+              style={{
+                color: mode === "light" ? "#333" : "#FFF",
+                backgroundColor: mode === "light" ? "#FFF" : "#9c9c9c",
+                borderColor: mode === "light" ? "#CCCCCC" : "#333",
+              }}
               rows="1"
             />
           </div>
@@ -82,9 +105,8 @@ const AddNote = (props) => {
             Submit
           </button>
         </form>
-        <hr className="my-5" />
       </div>
-    </>
+    </div>
   );
 };
 

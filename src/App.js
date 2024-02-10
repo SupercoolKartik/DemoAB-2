@@ -6,12 +6,14 @@ import About from "./components/about";
 import NoteState from "./context/noteState";
 import Login from "./components/login";
 import Signup from "./components/signup";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Alert from "./components/alert";
 import User from "./components/user";
+import noteContext from "./context/noteContext";
 
 function App() {
   const [alert, setalert] = useState(null);
+  const mode = useContext(noteContext);
 
   const showAlert = (message, type) => {
     setalert({ message: message, type: type });
@@ -20,9 +22,9 @@ function App() {
     }, 1500);
   };
   return (
-    <>
+    <div>
       <NoteState>
-        <div className="App">
+        <div className={`App ${mode === "dark" ? "bg-dark text-light" : ""}`}>
           <Router>
             <Navbar />
             <Alert alert={alert} />
@@ -44,7 +46,7 @@ function App() {
           </Router>
         </div>
       </NoteState>
-    </>
+    </div>
   );
 }
 

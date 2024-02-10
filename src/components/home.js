@@ -6,7 +6,6 @@ const Home = (props) => {
   return (
     <>
       <AddNote showAlert={props.showAlert} />
-      <h1>Notes</h1>
       <Notes showAlert={props.showAlert} />
     </>
   );
