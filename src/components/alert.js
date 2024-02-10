@@ -8,7 +8,7 @@ const Alert = (props) => {
     return word.charAt(0).toUpperCase() + word.slice(1);
   };
   return (
-    <div className="fixed-top" style={{ top: "72px" }}>
+    <div className="fixed-top" style={{ top: "72px", zIndex: 2000 }}>
       {props.alert && (
         <div className={`alert alert-${props.alert.type} `} role="alert">
           <strong>{capitalize(props.alert.type)}</strong>:

@@ -9,9 +9,16 @@ const AddNote = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (note.title === "") return alert("Please enter a note title");
-    else if (note.description === "")
-      return alert("Please enter a note description");
+    if (note.title.length < 3)
+      return props.showAlert(
+        "The minimum length of title should be 3!",
+        "danger"
+      );
+    else if (note.description.length < 5)
+      return props.showAlert(
+        "The minimum length of description should be 5!",
+        "danger"
+      );
     else {
       addNote(note.title, note.description, note.tag);
       props.showAlert("Note Added Successfully!", "success");
@@ -50,12 +57,12 @@ const AddNote = (props) => {
               placeholder="Enter Title"
               value={note.title}
               onChange={onChange}
+              minLength={3}
               style={{
                 color: mode === "light" ? "#333" : "#FFF",
                 backgroundColor: mode === "light" ? "#FFF" : "#9c9c9c",
                 borderColor: mode === "light" ? "#CCC" : "#333",
               }}
-              minLength="3"
               rows="1"
             />
           </div>
@@ -71,12 +78,12 @@ const AddNote = (props) => {
               placeholder="Enter the Description"
               value={note.description}
               onChange={onChange}
+              minLength={5}
               style={{
                 color: mode === "light" ? "#333" : "#FFF",
                 backgroundColor: mode === "light" ? "#FFF" : "#9c9c9c",
                 borderColor: mode === "light" ? "#CCC" : "#333",
               }}
-              minLength="5"
               rows="6"
             />
           </div>

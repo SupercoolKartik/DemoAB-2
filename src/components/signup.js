@@ -10,6 +10,7 @@ const Signup = (props) => {
     username: "",
     email: "",
     password: "",
+    cpassword: "",
   });
 
   const onChange = (e) => {
@@ -18,6 +19,12 @@ const Signup = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Display an alert if passwords do not match
+    if (credentials.password !== credentials.cpassword) {
+      props.showAlert("Passwords do not match!", "danger");
+      return;
+    }
 
     try {
       const res = await fetch(`${host}/api/auth/createuser`, {

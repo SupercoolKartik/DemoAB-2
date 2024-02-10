@@ -46,6 +46,16 @@ const Notes = (props) => {
   // Submitting the updated values to the database
   const submitUpdate = async (e) => {
     e.preventDefault();
+    if (note.title.length < 3)
+      return props.showAlert(
+        "The minimum length of title should be 3!",
+        "danger"
+      );
+    else if (note.description.length < 5)
+      return props.showAlert(
+        "The minimum length of description should be 5!",
+        "danger"
+      );
     ref.current.click();
     await editNote(note.id, note.title, note.description, note.tag);
     props.showAlert("Note is Updated Successfully!", "success");
