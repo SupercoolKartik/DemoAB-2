@@ -105,17 +105,17 @@ export default function Navbar() {
             ></i>
           )}
         </div>
-        <div className="form-check form-switch me-1">
+        {/* <div className="form-check form-switch me-1">
           <input
             className="form-check-input"
             type="checkbox"
             role="switch"
             id="flexSwitchCheckDefault"
           />
-          {/* <label className="form-check-label" htmlFor="flexSwitchCheckDefault">
+          <label className="form-check-label" htmlFor="flexSwitchCheckDefault">
             Default switch checkbox input
-          </label> */}
-        </div>
+          </label> 
+        </div> */}
 
         {!localStorage.getItem("token") ? (
           <div>

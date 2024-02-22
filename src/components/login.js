@@ -5,7 +5,8 @@ import noteContext from "../context/noteContext";
 const Login = (props) => {
   let navigate = useNavigate();
   const { mode } = useContext(noteContext);
-  const host = "http://localhost:5000";
+  //const host = "http://localhost:5000";
+  const host = "https://notescloud-backend.onrender.com";
   const [credentials, setCredentials] = useState({ email: "", password: "" });
 
   const onChange = (e) => {

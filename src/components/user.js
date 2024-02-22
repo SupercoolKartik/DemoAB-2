@@ -6,13 +6,16 @@ const User = () => {
   const [user, setUser] = useState([]);
 
   const getUserData = async () => {
-    const response = await fetch("http://localhost:5000/api/auth/getuserdata", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "auth-token": localStorage.getItem("token"),
-      },
-    });
+    const response = await fetch(
+      "https://notescloud-backend.onrender.com/api/auth/getuserdata",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": localStorage.getItem("token"),
+        },
+      }
+    );
     const responseData = await response.json();
 
     setUser(responseData);
