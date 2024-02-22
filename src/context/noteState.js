@@ -4,8 +4,8 @@ import NoteContext from "./noteContext";
 const NoteState = (props) => {
   // eslint-disable-next-line
 
-  const host = "http://localhost:5000";
-
+  //const host = "http://localhost:5000";
+  const host = "https://notescloud-backend.onrender.com";
   ////FUNCTIONS
 
   //Change Modes
