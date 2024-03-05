@@ -56,10 +56,16 @@ const Signup = (props) => {
 
   return (
     <div>
-      <h1 className={`my-3 ${mode === "dark" ? "text-light" : ""}`}>
+      <h1
+        className={` ${mode === "dark" ? "text-light" : ""}`}
+        style={{ marginTop: "100px" }}
+      >
         Sign Up to NotesCloud
       </h1>
-      <div className={`container `} style={{ width: "50%" }}>
+      <div
+        className={`container ${mode === "dark" ? "text-light" : ""}`}
+        style={{ width: "50%" }}
+      >
         <form onSubmit={handleSubmit}>
           <div className="form-group d-flex flex-column align-items-start my-3">
             <label htmlFor="exampleInputUsername">

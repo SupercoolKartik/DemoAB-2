@@ -44,17 +44,19 @@ const Login = (props) => {
 
   return (
     <div>
-      <h1 className={`my-3 ${mode === "dark" ? "text-light" : ""}`}>
+      <h1
+        className={` ${mode === "dark" ? "text-light" : ""}`}
+        style={{ marginTop: "100px" }}
+      >
         Login to NotesCloud
       </h1>
-      <div className={`container `} style={{ width: "45%" }}>
+      <div
+        className={`container ${mode === "dark" ? "text-light" : ""}`}
+        style={{ width: "45%" }}
+      >
         {/* ${mode === "dark" ? "text-light" : ""} */}
         <form onSubmit={onClickHandler}>
-          <div
-            className={`d-flex flex-column align-items-start my-3 ${
-              mode === "dark" ? "text-light" : ""
-            }`}
-          >
+          <div className="d-flex flex-column align-items-start my-3">
             <label htmlFor="exampleInputEmail1">
               <strong>Email address:</strong>
             </label>
@@ -73,11 +75,7 @@ const Login = (props) => {
               }}
             />
           </div>
-          <div
-            className={`d-flex flex-column align-items-start my-3 ${
-              mode === "dark" ? "text-light" : ""
-            }`}
-          >
+          <div className="d-flex flex-column align-items-start my-3">
             <label htmlFor="exampleInputPassword1">
               <strong>Password:</strong>
             </label>

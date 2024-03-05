@@ -78,7 +78,7 @@ export default function Navbar() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link
+              {/* <Link
                 className="nav-link disabled"
                 style={
                   mode === "dark" ? { color: "white" } : { color: "black" }
@@ -86,7 +86,7 @@ export default function Navbar() {
                 to="/home"
               >
                 Disabled
-              </Link>
+              </Link> */}
             </li>
           </ul>
         </div>
