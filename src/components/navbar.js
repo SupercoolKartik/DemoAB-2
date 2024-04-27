@@ -43,7 +43,6 @@ export default function Navbar() {
     localStorage.removeItem("token");
     navigate("/login");
   };
-
   return (
     <div>
       <nav
@@ -62,8 +61,8 @@ export default function Navbar() {
         <div className="container-fluid">
           {" "}
           {/* ----NotesCloud logo---- */}
-          <Link className="navbar-brand" to="/" style={{ color: "red" }}>
-            <b>NotesCloud</b>
+          <Link className="navbar-brand ms-1 " to="/" style={{ color: "red" }}>
+            <b className="pacifico-regular">NotesCloud</b>
           </Link>
           {/* ----Navbar toggler for mobile---- */}
           <button
@@ -135,8 +134,8 @@ export default function Navbar() {
                     className="nav-link text-success d-flex align-items-center justify-content-center "
                     to="/login"
                   >
-                    <RiLoginBoxLine className="me-1 fs-4" />
-                    <b>
+                    <RiLoginBoxLine className="me-1 fs-5" />
+                    <b className="fs-8">
                       <span>Login</span>
                     </b>
                   </Link>
@@ -144,9 +143,8 @@ export default function Navbar() {
               ) : (
                 <li className="nav-item" onClick={logoutHandler}>
                   <Link className="nav-link text-danger d-flex align-items-center justify-content-center ">
-                    <RiLogoutBoxRLine className="me-1 fs-4" />
-                    {""}
-                    <b>LogOut</b>
+                    <RiLogoutBoxRLine className="me-1 fs-5" />{" "}
+                    <b className="fs-8">LogOut</b>
                   </Link>
                 </li>
               )}
@@ -157,8 +155,8 @@ export default function Navbar() {
                     to="/signup"
                     role="button"
                   >
-                    <FiUserPlus className="me-1 fs-4" />
-                    <b>SignUp</b>
+                    <FiUserPlus className="me-1 fs-5" />
+                    <b className="fs-8">SignUp</b>
                   </Link>
                 </li>
               )}
