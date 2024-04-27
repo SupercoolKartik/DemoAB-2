@@ -34,7 +34,10 @@ export default function Navbar() {
       document.removeEventListener("click", handleDocumentClick);
     };
   }, []);
-
+  const handleLinkClick = () => {
+    // Programmatically trigger a click event on the toggler button to close the navbar
+    togglerRef.current.click();
+  };
   const { mode, modeChanger } = useContext(noteContext);
   //  if(mode==="dark"){setMode("light");localStorage.removeItem('.....
   useEffect(() => {}, [location, mode]);
@@ -67,13 +70,14 @@ export default function Navbar() {
           {/* ----Navbar toggler for mobile---- */}
           <button
             ref={togglerRef}
-            className="navbar-toggler d-md-none"
+            className="navbar-toggler d-md-none " // Added btn-sm class to make it smaller
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarNav"
             aria-controls="navbarNav"
             aria-expanded="false"
             aria-label="Toggle navigation"
+            style={{ backgroundColor: "transparent", border: "none" }} // Custom style for button
           >
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -84,7 +88,7 @@ export default function Navbar() {
             {" "}
             {/* Left Justified Navbar Elements */}
             <ul className="navbar-nav mb-2 mb-lg-0">
-              <li className="nav-item active">
+              <li className="nav-item active" onClick={handleLinkClick}>
                 <Link
                   className={`nav-link ${
                     location.pathname === "/" ? "active" : ""
@@ -97,7 +101,7 @@ export default function Navbar() {
                   Home <span className="sr-only">(current)</span>
                 </Link>
               </li>
-              <li className="nav-item">
+              <li className="nav-item" onClick={handleLinkClick}>
                 <Link
                   className={`nav-link ${
                     location.pathname === "/about" ? "active" : ""
@@ -129,7 +133,7 @@ export default function Navbar() {
                 )}
               </li>
               {!localStorage.getItem("token") ? (
-                <li className="nav-item">
+                <li className="nav-item" onClick={handleLinkClick}>
                   <Link
                     className="nav-link text-success d-flex align-items-center justify-content-center "
                     to="/login"
@@ -141,7 +145,13 @@ export default function Navbar() {
                   </Link>
                 </li>
               ) : (
-                <li className="nav-item" onClick={logoutHandler}>
+                <li
+                  className="nav-item"
+                  onClick={() => {
+                    logoutHandler(); // Call the logoutHandler function
+                    handleLinkClick(); // Call the handleLinkClick function
+                  }}
+                >
                   <Link className="nav-link text-danger d-flex align-items-center justify-content-center ">
                     <RiLogoutBoxRLine className="me-1 fs-5" />{" "}
                     <b className="fs-8">LogOut</b>
@@ -149,7 +159,7 @@ export default function Navbar() {
                 </li>
               )}
               {!localStorage.getItem("token") && (
-                <li className="nav-item">
+                <li className="nav-item" onClick={handleLinkClick}>
                   <Link
                     className="nav-link text-success d-flex align-items-center justify-content-center "
                     to="/signup"
