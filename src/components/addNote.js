@@ -21,7 +21,7 @@ const AddNote = (props) => {
       );
     else {
       addNote(note.title, note.description, note.tag);
-      props.showAlert("Note Added Successfully!", "success");
+      props.showAlert("Note added successfully!", "success");
     }
     setNote({ title: "", description: "", tag: "" });
   };

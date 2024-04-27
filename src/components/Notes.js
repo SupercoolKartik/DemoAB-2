@@ -58,7 +58,7 @@ const Notes = (props) => {
       );
     ref.current.click();
     await editNote(note.id, note.title, note.description, note.tag);
-    props.showAlert("Note is Updated Successfully!", "success");
+    props.showAlert("Note updated successfully!", "success");
   };
 
   return (
