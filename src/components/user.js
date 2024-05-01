@@ -31,18 +31,21 @@ const User = () => {
   }, []);
   return (
     <>
-      <section className="vh-100 mt-3">
+      <section className="vh-100 " style={{ marginTop: "80px" }}>
         <div className="py-5 h-100">
           <div className="d-flex justify-content-center align-items-center h-100">
             <div className="col-lg-6 mb-4 mb-lg-0">
               <div className="mb-3" style={{ borderRadius: ".5rem" }}>
                 <div className="row g-0">
+                  {/* Left side of the Users component */}
                   <div
-                    className="col-md-4 gradient-custom text-center text-black"
+                    className="col-md-4  gradient-custom text-center text-black"
                     style={{
                       borderTopLeftRadius: ".5rem",
                       borderBottomLeftRadius: ".5rem",
                       backgroundColor: "#babdd0",
+                      marginTop: "50px",
+                      paddingTop: "140px",
                     }}
                   >
                     <img
@@ -57,9 +60,13 @@ const User = () => {
                     </p>
                     <i className="far fa-edit mb-5"></i>
                   </div>
+                  {/* right side of the Users component */}
                   <div
                     className="col-md-8"
-                    style={{ backgroundColor: "#959596" }}
+                    style={{
+                      borderTopLeftRadius: ".5rem",
+                      backgroundColor: "#959596",
+                    }}
                   >
                     <div className="card-body p-4">
                       <h6>Information</h6>

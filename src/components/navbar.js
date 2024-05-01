@@ -117,6 +117,15 @@ export default function Navbar() {
             </ul>
             {/* Right Justified Navbar Elements */}
             <ul className="nav navbar-nav navbar-right">
+              <li className="my-2  mx-2" onClick={handleLinkClick}>
+                <Link to="/user">
+                  <i
+                    className="fa-regular fa-user"
+                    title="User Profile"
+                    style={{ color: "#74C0FC" }}
+                  ></i>
+                </Link>
+              </li>
               <li className="my-auto  mx-3">
                 {mode === "light" ? (
                   <i
