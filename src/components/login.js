@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import noteContext from "../context/noteContext";
-
+import { Link } from "react-router-dom";
 const Login = (props) => {
   let navigate = useNavigate();
   const { mode } = useContext(noteContext);
@@ -94,7 +94,7 @@ const Login = (props) => {
               }}
             />
           </div>
-          <div className="form-check">
+          {/* <div className="form-check">
             <input
               type="checkbox"
               className="form-check-input"
@@ -108,7 +108,8 @@ const Login = (props) => {
             >
               Check me out
             </label>
-          </div>
+          </div> */}
+
           <button
             type="submit"
             className={`btn ${mode === "dark" ? "btn-light" : "btn-primary"}`}
@@ -116,6 +117,12 @@ const Login = (props) => {
             Submit
           </button>
         </form>
+        <div class="mt-2">
+          Don't have an account?{" "}
+          <span class="small text-muted">
+            <Link to="/signup">Signup</Link>
+          </span>
+        </div>
       </div>
     </div>
   );
